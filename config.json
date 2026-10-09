@@ -1,0 +1,73 @@
+{
+  "name": "PGN",
+  "n_gpu": 1,
+
+  "data": {
+    "vocab_size": 50000,
+    "vocab_min_freq": 1,
+    "src_max_train": 400,
+    "src_max_test": 400,
+    "tgt_max_train": 100,
+    "tgt_max_test": 100
+  },
+
+  "data_loader": {
+    "data_dir": "data/",
+    "batch_size": {
+      "train": 64,
+      "val": 64,
+      "test": 1
+    },
+    "shuffle": true,
+    "num_workers": 8
+  },
+
+  "model": {
+    "type": "PointerGenerator",
+    "use_pretrained": true,
+    "pretrained": "fasttext",
+    "args": {
+      "embed_dim": 300,
+      "hidden_dim": 256
+    }
+  },
+
+  "optimizer": {
+    "type": "Adagrad",
+    "args":{
+      "lr": 0.15,
+      "lr_init_accum": 0.1
+    }
+  },
+
+  "loss": {
+    "args": {
+      "use_coverage": true,
+      "cov_weight": 1.0,
+      "pad_id": 0
+    }
+  },
+
+  "trainer": {
+    "epochs": 10,
+    "max_iter": 600000,
+    "max_grad_norm": 2.0,
+    "save_freq": 5,
+    "verbose": true
+  },
+
+  "decode": {
+    "args": {
+      "beam_size": 2,
+      "min_dec_steps": 100,
+      "num_return_seq": 1
+    }
+  },
+
+  "path": {
+    "vocab": "vocab.json",
+    "train": "../data/nikl/nikl_train.pkl",
+    "val": "../data/nikl/nikl_dev.pkl",
+    "test": "../data/nikl/nikl_test.pkl"
+  }
+}
