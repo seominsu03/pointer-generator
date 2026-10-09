@@ -82,3 +82,11 @@ python test.py --model-path $PATH-TO-CHECKPOINT
 
 This will report the ROUGE scores on the command-line and save the predicted outputs in `.tsv` format in the experiment directory where you have loaded the checkpoint.
  
+## 출처 및 참고 코드
+
+본 저장소는 한국어 문서 요약 모델의 참고 코드를 보관하기 위한 저장소입니다.
+
+- 원본 저장소: https://github.com/jiminsun/pointer-generator
+- 원본 논문: See et al., *Get To The Point: Summarization with Pointer-Generator Networks* (2017)
+
+원본 코드의 저작권 및 라이선스 조건을 따릅니다.
